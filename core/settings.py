@@ -25,7 +25,9 @@ SECRET_KEY = 'a90z1!clm3m2c44mc7@g#%rz(#c7t#i(v!g3j2exy^wqdj-**&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*',
+]
 
 
 # Application definition
@@ -148,3 +150,11 @@ INSTALLED_APPS += [
                     'project.bot',
                     ]
 TOKEN = '1167828810:AAHLGxpBMajZYpNlDY3fh6QFkx5tJnXrOAk'
+
+#SMS
+INSTALLED_APPS += [
+                    'project.sms',
+                    ]
+TWILIO_ACCOUNT_SID  = 'AC9861ce6fc83e2a700371bde633e0c619'
+TWILIO_AUTH_TOKEN   = '0e968e322a070554b8d31547b4303f2a'
+TWILIO_PHONE_NUMBER = '+18327569282'
