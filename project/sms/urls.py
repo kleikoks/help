@@ -3,5 +3,5 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('sms/', sms, name='sms'),
+    path('send_sms/', send_sms, name='send_sms'),
 ]
