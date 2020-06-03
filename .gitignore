@@ -1,3 +1,4 @@
+.sqlite3
 .vscode
 .env
 .venv
@@ -7,6 +8,7 @@ env/
 venv/
 venv
 # media/
+db.sqlite3
 settings.ini
 
 migrations
