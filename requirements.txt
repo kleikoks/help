@@ -16,7 +16,6 @@ djangorestframework==3.3.2
 dnspython==1.16.0
 eventlet==0.25.2
 future==0.18.2
-gevent==20.5.2
 greenlet==0.4.15
 idna==2.9
 kombu==4.6.9
