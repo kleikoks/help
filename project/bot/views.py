@@ -15,19 +15,19 @@ headers = {'X-Viber-Auth-Token': auth_token}
 viber = BotConfiguration(
 	name = 'tivtir',
 	avatar = 'http://viber.com/avatar.jpg',
-	auth_token = auth_token
+	auth_token = '4b88a58f1de7d33b-2dc87d48a643f917-659644b299fe82e9'
 )
 
 def viber_bot(request):
   sen = dict(
-            url='https://kleikoks.fun',
+            url='https://kleikoks.fun/viber_bot',
             event_types = ['unsubscribed', 'conversation_started', 'message', 'seen', 'delivered'],
             send_name = True,
             send_photo = True
             )
   r = requests.post(hook, json.dumps(sen), headers=headers)
-  print(r.json())
-  return HttpResponse(status=200)
+  r = r.json()
+  return render(request, 'index.html', locals())
 
 # telegram
 import telebot

@@ -16,7 +16,7 @@ sudo systemctl daemon-reload
 
 
 
-sudo certbot --nginx -d project_domain.com
+sudo certbot --nginx -d kleikoks.fun
 
 sudo certbot renew --dry-run
 
