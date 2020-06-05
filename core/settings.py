@@ -64,10 +64,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #OAUTH 
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
@@ -122,28 +126,34 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# allauth
+#OAUTH
 INSTALLED_APPS += [
-                    #local
                     'project.login',
-                    'django.contrib.sites',
-                    #allauth
-                    'allauth',
-                    'allauth.account',
-                    'allauth.socialaccount',
-                    #providers
-                    'allauth.socialaccount.providers.google',
-                    'allauth.socialaccount.providers.facebook',
+                    'oauth2_provider',
+                    'rest_framework_social_oauth2',
+                    'social_django'
                     ]
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
+]
 
-SITE_ID = 1
-LOGIN_REDIRECT_URL = "/"
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'http://localhost:8000'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1390092141182049'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'da02510ce61efad7fbb09b01fb326b7c'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '76663722891-kjf4e6qvjuk46dbbu182j9slqd5o7a4v.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'o0pRpRsevvQQg4J7Y4RzuQXR'
+SOCIAL_AUTH__KEY = 'ID'
+SOCIAL_AUTH__Secret = 'SECRET'
 
 # telegram pip install telebot &&  pip install pytelegrambotapi --upgrade
 INSTALLED_APPS += [
@@ -160,7 +170,6 @@ TWILIO_AUTH_TOKEN   = '5f33e1786baddc5e913155c47edebb94'
 TWILIO_PHONE_NUMBER = '+18327569282'
 
 # Redis
-
 REDIS_HOST= '127.0.0.1'
 REDIS_PORT = '6379'
 # CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'

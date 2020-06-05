@@ -6,15 +6,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project.urls')),
     path('', include('project.bot.urls')),
+    path('', include('project.login.urls')),
 ]
 
 
-# allauth
-urlpatterns += [
-    path('accounts/', include('allauth.urls')),
-]
 #SMS
 urlpatterns += [
     path('', include('project.sms.urls')),
     path('task/', task, name='task'),
+]
+
+#OATUH
+
+urlpatterns += [
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('social-auth/', include('social_django.urls', namespace="social")),
 ]
