@@ -142,10 +142,15 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+SOCIAL_AUTH_DISCONNECT_PIPELINE = (
+'social.pipeline.disconnect.get_entries',
+'social.pipeline.disconnect.revoke_tokens',
+'social.pipeline.disconnect.disconnect',
+)
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'http://localhost:8000/login'
 LOGIN_REDIRECT_URL = 'http://localhost:8000'
-LOGOUT_URL = 'logout'
+LOGOUT_URL = 'http://localhost:8000/'
 LOGOUT_REDIRECT_URL = 'login'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1390092141182049'
