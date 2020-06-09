@@ -15,7 +15,10 @@ urlpatterns += [
     path('', include('project.sms.urls')),
     path('task/', task, name='task'),
 ]
-
+#Facebook
+urlpatterns += [
+    path('facebook/', include('django_facebook.urls')),
+]
 #OATUH
 
 urlpatterns += [

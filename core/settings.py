@@ -67,6 +67,8 @@ TEMPLATES = [
                 #OAUTH 
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                #Facebook
+                'django_facebook.context_processors.facebook',
             ],
         },
     },
@@ -126,7 +128,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
-
+#Facebook 
+FACEBOOK_APP_ID='1390092141182049'
+FACEBOOK_APP_SECRET='da02510ce61efad7fbb09b01fb326b7c'
+INSTALLED_APPS += [
+                    'django_facebook',
+                    ]
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]                
 #OAUTH
 INSTALLED_APPS += [
                     'project.login',
@@ -135,7 +149,7 @@ INSTALLED_APPS += [
                     'social_django'
                     ]
 
-AUTHENTICATION_BACKENDS = [
+AUTHENTICATION_BACKENDS += [
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.instagram.InstagramOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
